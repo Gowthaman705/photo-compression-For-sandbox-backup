@@ -1,0 +1,36 @@
+public with sharing class CameraAccess2 {
+    public Id ParentId {get; set;}
+    public Id recId {get; set;}
+    public Blob fileBody { get; set; }
+    public String fileName { get; set; }
+    public String contentType { get; set; }
+      
+   
+      public CameraAccess2() {
+        
+       recId= ApexPages.currentPage().getParameters().get('Id');
+       PageReference detailPage = new PageReference('/' + recId);
+       detailPage.setRedirect(true);
+       }
+   
+
+    public PageReference uploadFile() {
+        Attachment attachment = new Attachment();
+        attachment.Body = fileBody;
+        attachment.Name = fileName;
+        attachment.ContentType = contentType;
+        attachment.ParentId = recId;
+        insert attachment;
+        
+        
+        PageReference detailPage = new PageReference('/' + recId);
+        return detailPage;
+    }
+    
+
+    public PageReference cancel() {
+        PageReference detailPage = new PageReference('/' + recId);
+        return detailPage;
+    }
+    
+}
