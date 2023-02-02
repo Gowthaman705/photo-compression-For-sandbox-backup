@@ -1,0 +1,58 @@
+<!-- =============================================
+*Page Name      : UploadPhotocapture
+*Description    : Developed for scan the product and transfer parts from one warehouse to another.
+*Company        : Merfantz Technologies Pvt Ltd
+*Date           : 28th Jan, 2022
+*Version        : 1.0
+*Ticket No      : 
+============================================= -->
+<apex:page controller="CameraAccess2" >
+<style>
+.container {
+display: flex;
+align-items: center;
+}
+
+.output-panel {
+margin-right: 50px;
+font-weight:bold;
+font-size:18pt;
+margin-top: 5px;
+padding-bottom:50px;
+}
+
+.file{
+align-self: center;
+margin-right: 50px;
+}
+
+.upload-button {
+padding-bottom:50px;
+margin-right: 500px;
+margin-top: 30px;
+}
+</style>
+    
+<apex:pageBlock >
+    <apex:pageBlockSection >
+      <apex:form style="margin-left:50px;" id="frm">
+       <div style="margin-right: 500px; ">
+        <div class="output-panel">Upload Photo</div>
+         <apex:inputFile value="{!fileBody}" filename="{!fileName}" contentType="{!contentType}" />
+          </div>
+           <div class="upload-button">
+           
+          
+          
+           <apex:commandButton value="Upload" disabled="fileName" action="{!uploadFile}" rendered="true"/>
+           
+     
+            <apex:commandButton value="Cancel" action="{!cancel}" immediate="true" style="margin:5px; " />
+           </div>
+             
+        </apex:form>
+      
+    </apex:pageBlockSection>
+</apex:pageBlock>
+   
+</apex:page>
